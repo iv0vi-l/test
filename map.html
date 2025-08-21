@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>ClimateLens - Maps</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/fontawesome-6.7.2/css/all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-5.3.7.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="css/aos.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="css/swiper-bundle.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <!-- Leaflet CSS-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+    <!-- Main CSS-->
+    <link href="css/map.css" rel="stylesheet" media="all">
+    <link href="css/style.css" rel="stylesheet" media="all">
+
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <span style="font-weight:700; font-size:1.3rem; color:#2d3e50;">🌦️ClimateLens</span>
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li>
+                            <a href="index.html">
+                                <i class="fas fa-home"></i>Home</a>
+                        </li>
+                        <li>
+                            <a href="chart.html">
+                                <i class="fas fa-chart-bar"></i>Charts</a>
+                        </li>
+                        <li>
+                            <a href="table.html">
+                                <i class="fas fa-table"></i>Tables</a>
+                        </li>
+                        <li>
+                            <a href="compare.html">
+                                <i class="far fa-check-square"></i>Compare</a>
+                        </li>
+                        <li>
+                            <a href="map.html">
+                                <i class="fas fa-map-marker-alt"></i>Maps</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+
+        
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop d-none d-lg-block">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap" style="display: flex; justify-content: space-between; align-items: center;">
+                            <!-- Logo -->
+                            <a class="logo" href="index.html" style="display: flex; align-items: center;">
+                                <span style="font-weight:700; font-size:1.3rem; color:#2d3e50;">🌦️ClimateLens</span>
+                            </a>
+                            <!-- Navbar -->
+                            <nav class="navbar-desktop">
+                                <ul class="nav" style="gap: 18px;">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="chart.html"><i class="fas fa-chart-bar"></i> Charts</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="table.html"><i class="fas fa-table"></i> Tables</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="compare.html"><i class="far fa-check-square"></i> Compare</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="map.html"><i class="fas fa-map-marker-alt"></i> Maps</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- END HEADER DESKTOP-->
+
+            <!-- Main Content -->
+            <div class="container1">
+                <button id="openBtn" onclick="openPanel()">☰ Temp Control</button>
+                <div id="sidePanel" class="sidepanel">
+                    <span class="closebtn" onclick="closePanel()">&times;</span>
+                    <div class="sidepanel-content">
+                        <div class="controls">
+                            <div class="temperature-display" id="tempDisplay">15°C</div>
+                            <div class="slider-container">
+                                <div class="slider-label cold-label">❄️ Cold</div>
+                                <input type="range" min="15" max="19" value="15" class="slider" id="tempSlider">
+                                <div class="slider-label hot-label">Hot 🔥</div>
+                            </div>
+                            <div class="description-box" id="descriptionBox">
+                                Earth is at a comfortable temperature.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title">🌍 Global Temperature Simulator</div>
+                <div class="map-container">
+                    <img class="world-map" id="worldMap"
+                        src="https://www.worldometers.info/world-map/world-map.jpg"
+                        alt="World Map"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwMCIgaGVpZ2h0PSI1MDAiIHZpZXdCb3g9IjAgMCAxMDAwIDUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9IiMzNDk4ZGIiLz48dGV4dCB4PSI1MDAiIHk9IjI1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZHk9Ii4zZW0iPldvcmxkIE1hcCBDb21pbmcgU29vbi4uLjwvdGV4dD48L3N2Zz4=';">
+                </div>
+            </div>
+
+            <div class="news-section">
+                <h2 class="news-title">Climate News</h2>
+                <div class="news-container">
+                    <div class="news-item">
+                        <img src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/ebf7/live/37083420-781b-11f0-9b1f-8bdc1892e7d0.jpg.webp" alt="Climate News" class="news-image">
+                        <div class="news-content" title="Average Global Temperature Increasing again ye......">
+                            <h3 class="news-headline">
+                                <a href="https://www.bbc.com/news/articles/cg7jd3ljzyxo" target="_blank">
+                                    Global Temperature Records Broken Again This Year
+                                </a>
+                            </h3>
+                            <p class="news-summary">
+                                Yorkshire seas set to break temperature records...
+                            </p>
+                            <span class="news-date">August 14, 2025</span>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://i.natgeofe.com/n/763b92f9-6005-4635-9dc4-e58b1da3b944/NationalGeographic_2756643.jpg" alt="Sea Level News" class="news-image">
+                        <div class="news-content" title="Ice Melting cause Sea Lvl Increasing......">
+                            <h3 class="news-headline">
+                                <a href="https://www.nationalgeographic.com/environment/article/glacier-ice-melting-climate-change-sea-level-rise" target="_blank">
+                                    The world's glaciers are melting faster than we thought, new research shows
+                                </a>
+                            </h3>
+                            <p class="news-summary">
+                                Glaciers have survived through a delicate balance of gain and loss...
+                            </p>
+                            <span class="news-date">November 15, 2024</span>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1KGmPa.img?w=570&h=428&m=6" alt="Renewable Energy" class="news-image">
+                        <div class="news-content" title="CO2 Emission Increasing year......">
+                            <h3 class="news-headline">
+                                <a href="https://www.msn.com/en-us/weather/climate-change/state-of-climate-earth-hottest-on-record-again-as-co2-still-climbs-and-glaciers-wilt/ar-AA1KGdg3?ocid=BingNewsVerp" target="_blank">
+                                    State of Climate
+                                </a>
+                            </h3>
+                            <p class="news-summary">
+                                Earth Hottest on Record again, as CO2 still Climbs and Glaciers Wilt...
+                            </p>
+                            <span class="news-date">August 18, 2025</span>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production%20Library/01-07-2025-Unsplash-sun-heat.jpg/image1170x530cropped.jpg" alt="Sea Level News" class="news-image">
+                        <div class="news-content" title="Ice Melting cause Sea Lvl Increasing......">
+                            <h3 class="news-headline">
+                                <a href="https://news.un.org/en/story/2025/08/1165597" target="_blank">
+                                    Extreme heat is breaking records worldwide
+                                </a>
+                            </h3>
+                            <p class="news-summary">
+                                This is not just a climate issue, it’s a public health emergency...
+                            </p>
+                            <span class="news-date">August 7, 2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-footer">
+                    <a href="https://www.climate.gov/news-features" target="_blank" class="view-more-btn">
+                        View More Climate News →
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>Copyright © 2025 ClimateLens All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE CONTAINER-->
+    </div>
+
+    <script>
+    function openPanel() {
+        document.getElementById("sidePanel").style.width = "285px";
+    }
+    function closePanel() {
+        document.getElementById("sidePanel").style.width = "0";
+    }
+    </script>
+    <script>
+        function updateMapAndDescription(temp) {
+        let description = "";
+        if (temp == 15) description = "This is equivalent to the current global average temperature.";
+        else if (temp == 16 || temp == 17) description = "If average temperature rose to 16-17°C, 2.3 billion of people would be exposed to deadly combinations of heat and humidity at least annually. Coral reefs would be severly damaged, and many species would face extinction.";
+        else if (temp == 18) description = "If average temperature rose to 18°C, 3.25 billion people would be exposed to deadly heat humidity-conditions at least annually. Potential for catastrophic sea level rise.";
+        else description = "If average temperature rose to 19°C, 4.7 billion people would experience potentially lethal heat. Sea level might rise between 6-19 metres over several hundred years as it triggers melting of the Antarctic and Greenland ice sheets.";
+        document.getElementById('descriptionBox').textContent = description;
+    }
+
+    tempSlider.addEventListener('input', () => {
+        updateMapAndDescription(parseInt(tempSlider.value));
+    });
+
+    updateMapAndDescription(15);
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.getElementById('tempSlider');
+        const tempDisplay = document.getElementById('tempDisplay');
+        const worldMap = document.getElementById('worldMap');
+
+        function updateMapColors(temperature) {
+            const normalizedTemp = (temperature - 15) / 4;
+            
+            let filters = [];
+            
+            if (normalizedTemp === 0) {
+                worldMap.style.filter = '';
+            } else {
+                const hotFactor = normalizedTemp;
+                const hueShift = -hotFactor * 60;
+                const saturation = 1 + (hotFactor * 0.8); 
+                const contrast = 1 + (hotFactor * 0.4); 
+                const sepia = hotFactor * 0.5;
+                
+                filters.push(`hue-rotate(${hueShift}deg)`);
+                filters.push(`saturate(${saturation})`);
+                filters.push(`contrast(${contrast})`);
+                filters.push(`sepia(${sepia})`);
+                
+                worldMap.style.filter = filters.join(' ');
+            }
+            
+            if (temperature === 15) {
+                tempDisplay.style.color = '#90ee90';
+            } else if (temperature > 17) {
+                tempDisplay.style.color = '#ff6b6b'; 
+            } else {
+                tempDisplay.style.color = '#ffaa00'; 
+            }
+        }
+
+        function updateTemperature() {
+            const temperature = parseInt(slider.value);
+            tempDisplay.textContent = `${temperature}°C`;
+            updateMapColors(temperature);
+        }
+
+        updateTemperature();
+        slider.addEventListener('input', updateTemperature);
+    });
+    </script>
+    <!-- Bootstrap 5 JS-->
+    <script src="js/vanilla-utils.js"></script>
+    <script src="vendor/bootstrap-5.3.7.bundle.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+	<!-- Modern JS-->
+	<script src="js/bootstrap5-init.js"></script>
+	<script src="js/swiper-bundle.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/modern-plugins.js"></script>    <!-- Main JS-->
+    <script src="js/main-vanilla.js"></script>
+
+    <!-- Initialize Leaflet Maps for map.html only -->
+    
+
+</body>
+
+</html>
+

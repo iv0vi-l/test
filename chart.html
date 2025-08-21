@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+    <!-- Title Page-->
+    <title>ClimateLens - Charts</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/fontawesome-6.7.2/css/all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-5.3.7.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="css/aos.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="css/swiper-bundle.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/chart.css" rel="stylesheet" media="all">
+    <link href="css/style.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <span style="font-weight:700; font-size:1.3rem; color:#2d3e50;">🌦️ClimateLens</span>
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li>
+                            <a href="index.html">
+                                <i class="fas fa-home"></i>Home</a>
+                        </li>
+                        <li>
+                            <a href="chart.html">
+                                <i class="fas fa-chart-bar"></i>Charts</a>
+                        </li>
+                        <li>
+                            <a href="table.html">
+                                <i class="fas fa-table"></i>Tables</a>
+                        </li>
+                        <li>
+                            <a href="compare.html">
+                                <i class="far fa-check-square"></i>Compare</a>
+                        </li>
+                        <li>
+                            <a href="map.html">
+                                <i class="fas fa-map-marker-alt"></i>Maps</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+
+        
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop d-none d-lg-block">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap" style="display: flex; justify-content: space-between; align-items: center;">
+                            <!-- Logo -->
+                            <a class="logo" href="index.html" style="display: flex; align-items: center;">
+                                <span style="font-weight:700; font-size:1.3rem; color:#2d3e50;">🌦️ClimateLens</span>
+                            </a>
+                            <!-- Navbar -->
+                            <nav class="navbar-desktop">
+                                <ul class="nav" style="gap: 18px;">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="chart.html"><i class="fas fa-chart-bar"></i> Charts</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="table.html"><i class="fas fa-table"></i> Tables</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="compare.html"><i class="far fa-check-square"></i> Compare</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="map.html"><i class="fas fa-map-marker-alt"></i> Maps</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- END HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="chart-card">
+                    <h1>Data Visualization</h1>
+                    <div>
+                        <label for="dataColumn">Data Column:</label>
+                        <select id="dataColumn">
+                            <option value="Avg Temperature (°C)">Average Temperature (°C)</option>
+                            <option value="CO2 Emissions (Tons/Capita)">CO2 Emissions (Tons/Capita)</option>
+                            <option value="Sea Level Rise (mm)">Sea Level Rise (mm)</option>
+                            <option value="Rainfall (mm)">Rainfall (mm)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="chartType">Chart Type:</label>
+                        <select id="chartType">
+                            <option value="line">Line Chart</option>
+                            <option value="bar">Bar Chart</option>
+                            <option value="scatter">Scatter Plot</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="countryFilter">Country:</label>
+                        <select id="countryFilter">
+                            <option value="All">All</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="China">China</option>
+                            <option value="France">France</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="Russia">Russia</option>
+                            <option value="UK">UK</option>
+                            <option value="USA">USA</option>
+                        </select>
+                    </div>
+                    <canvas id="dataChart" width="320" height="160"></canvas>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>Copyright © 2025 ClimateLens All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE CONTAINER-->
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="js/vanilla-utils.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-5.3.7.bundle.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/bootstrap5-init.js"></script>
+    <script src="js/main-vanilla.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/modern-plugins.js"></script>
+
+    <script>
+        // REPLACE THIS SECTION WITH YOUR CSV DATA
+        const csvString = `Year,Country,Avg Temperature (°C),CO2 Emissions (Tons/Capita),Sea Level Rise (mm),Rainfall (mm)
+2020,Argentina,14.3,4.2,3.5,990
+2020,Australia,12.9,14.6,3.9,878
+2020,Brazil,23.8,3.3,2.1,1573
+2020,China,10.2,7.3,4,812
+2020,France,13.1,6.5,4.3,910
+2020,Germany,9.5,8.7,3.5,728
+2020,Indonesia,21.6,3.5,4.8,2812
+2020,Russia,12.7,10.6,2.7,926
+2020,UK,7.8,5.7,4.9,1541
+2020,USA,14.5,18.7,4.9,1418
+2021,Argentina,12.9,3.6,4.7,829
+2021,Australia,13.9,15.1,4.1,534
+2021,Brazil,25.5,3,3.2,2320
+2021,China,9.6,10.8,3.1,890
+2021,France,11.8,5,4.1,1133
+2021,Germany,9.7,10.4,3,1081
+2021,Indonesia,24.1,3.3,4.7,2718
+2021,Russia,10.9,5.5,4.9,942
+2021,UK,12.3,5.5,4,1154
+2021,USA,12.3,13.3,3.3,617
+2022,Argentina,14.5,4.3,4,990
+2022,Australia,16,15.1,4.4,756
+2022,Brazil,25.8,2.6,4.6,1691
+2022,China,9.6,8.9,3.6,645
+2022,France,12.1,4.3,4.4,882
+2022,Germany,9.8,8.2,3.3,654
+2022,Indonesia,26.5,2.2,3.3,2700
+2022,Russia,9.3,11.5,3.3,671
+2022,UK,9.7,5.4,3.3,1045
+2022,USA,13.4,13.1,3.7,566
+2023,Argentina,13.0 ,4.4,3.4,1000
+2023,Australia,17.0 ,14.9,4.3,534
+2023,Brazil,24.4,2.0 ,4.3,1760
+2023,China,12,6.6,2.8,670
+2023,France,15.9,4.5,3.2,870
+2023,Germany,10,7.9,3.5,700
+2023,Indonesia,27.8,2.1,4.4,2648
+2023,Russia,9.9,11.4,3.3,460
+2023,UK,9.8,5.3,4.2,1154
+2023,USA,12.6,11.2,3.4,731`;
+
+        let chart;
+        let csvData = [];
+        
+        // Parse the embedded CSV data
+        function loadData() {
+            Papa.parse(csvString, {
+                header: true,
+                dynamicTyping: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    csvData = results.data;
+                    console.log('CSV Data loaded:', csvData);
+                    createChart();
+                },
+                error: function(error) {
+                    console.error('Error parsing CSV:', error);
+                }
+            });
+        }
+        
+        document.getElementById('chartType').addEventListener('change', updateChart);
+        document.getElementById('dataColumn').addEventListener('change', updateChart);
+        document.getElementById('countryFilter').addEventListener('change', updateChart);
+
+        function createChart() {
+            if (csvData.length === 0) return;
+
+            const ctx = document.getElementById('dataChart').getContext('2d');
+            const chartType = document.getElementById('chartType').value;
+            const selectedColumn = document.getElementById('dataColumn').value;
+            const selectedCountry = document.getElementById('countryFilter').value;
+
+            let labels = [];
+            let datasets = [];
+
+            if (chartType === 'scatter') {
+                // Use Year as X, selectedColumn as Y
+                let filtered = csvData;
+                if (selectedCountry !== 'All') {
+                    filtered = csvData.filter(row => row['Country'] === selectedCountry);
+                }
+                const dataPoints = filtered.map(row => ({
+                    x: parseInt(row['Year']), // Ensure integer year
+                    y: Number(row[selectedColumn]),
+                    country: row['Country']
+                }));
+                datasets = [{
+                    label: selectedCountry === 'All' ? selectedColumn + ' (All Countries)' : selectedCountry,
+                    data: dataPoints,
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    pointRadius: 5
+                }];
+                labels = []; // Scatter doesn't use labels
+            } else if ((chartType === 'line' || chartType === 'bar') && selectedCountry === 'All') {
+                labels = [...new Set(csvData.map(row => row['Year']))];
+                const countries = [...new Set(csvData.map(row => row['Country']))];
+                countries.forEach((country, idx) => {
+                    const data = labels.map(year => {
+                        const row = csvData.find(r => r['Year'] === year && r['Country'] === country);
+                        return row ? Number(row[selectedColumn]) : null;
+                    });
+                    datasets.push({
+                        label: country,
+                        data: data,
+                        backgroundColor: chartType === 'bar' ? generateColors(countries.length)[idx] : undefined,
+                        borderColor: chartType === 'line' ? generateColors(countries.length)[idx] : undefined,
+                        fill: false,
+                        tension: 0.2
+                    });
+                });
+            } else {
+                // Filter by selected country or all countries summed
+                if (selectedCountry === 'All') {
+                    // Sum all countries per year
+                    const yearMap = {};
+                    csvData.forEach(row => {
+                        const year = row['Year'];
+                        const value = row[selectedColumn];
+                        if (!yearMap[year]) yearMap[year] = 0;
+                        yearMap[year] += Number(value);
+                    });
+                    labels = Object.keys(yearMap);
+                    datasets = [{
+                        label: selectedColumn + ' (All Countries)',
+                        data: Object.values(yearMap),
+                        backgroundColor: chartType === 'bar' ? generateColors(1)[0] : undefined,
+                        borderColor: chartType === 'line' ? generateColors(1)[0] : undefined,
+                        fill: false,
+                        tension: 0.2
+                    }];
+                } else {
+                    // Only selected country
+                    const filtered = csvData.filter(row => row['Country'] === selectedCountry);
+                    labels = [...new Set(filtered.map(row => row['Year']))];
+                    const data = labels.map(year => {
+                        const row = filtered.find(r => r['Year'] === year);
+                        return row ? Number(row[selectedColumn]) : null;
+                    });
+                    datasets = [{
+                        label: selectedCountry,
+                        data: data,
+                        backgroundColor: chartType === 'bar' ? generateColors(1)[0] : undefined,
+                        borderColor: chartType === 'line' ? generateColors(1)[0] : undefined,
+                        fill: false,
+                        tension: 0.2
+                    }];
+                }
+            }
+
+            // Destroy existing chart if it exists
+            if (chart) chart.destroy();
+
+            const chartConfig = {
+                type: chartType,
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: selectedColumn + (chartType === 'scatter' ? ' (Scatter Plot)' : ' by Year')
+                        },
+                        legend: {
+                            display: true
+                        },
+                        tooltip: {
+                            enabled: true,
+                            mode: 'nearest',
+                            intersect: false,
+                            backgroundColor: '#4272d7',
+                            titleColor: '#fff',
+                            bodyColor: '#fff',
+                            borderColor: '#fff',
+                            borderWidth: 2,
+                            titleFont: { family: 'Poppins', size: 16, weight: 'bold' },
+                            bodyFont: { family: 'Poppins', size: 14 },
+                            padding: 12,
+                            callbacks: chartType === 'scatter' ? {
+                                label: function(context) {
+                                    const d = context.raw;
+                                    return `Country: ${d.country}, Year: ${d.x}, Value: ${d.y}`;
+                                }
+                            } : {}
+                        }
+                    },
+                    scales: chartType === 'scatter'
+                        ? {
+                            x: {
+                                title: { display: true, text: 'Year' },
+                                type: 'linear',
+                                position: 'bottom',
+                                ticks: {
+                                    stepSize: 1,
+                                    callback: function(value) {
+                                        // Only show integer years
+                                        return Number.isInteger(value) ? value : '';
+                                    },
+                                    min: 2020,
+                                    max: 2023
+                                }
+                            },
+                            y: {
+                                title: { display: true, text: selectedColumn },
+                                beginAtZero: false
+                            }
+                        }
+                        : {
+                            x: { title: { display: true, text: 'Year' } },
+                            y: { beginAtZero: true, title: { display: true, text: selectedColumn } }
+                        },
+                    // Highlight line on click
+                    onClick: function(evt, elements) {
+                        if (chartType !== 'line' || !elements.length) return;
+                        const datasetIndex = elements[0].datasetIndex;
+                        chart.data.datasets.forEach((ds, idx) => {
+                            // Highlight selected line: thicker, full color, full opacity
+                            ds.borderWidth = (idx === datasetIndex) ? 8 : 2;
+                            ds.borderColor = (idx === datasetIndex)
+                                ? ds.borderColor.replace('0.8', '1').replace('0.4', '1')
+                                : ds.borderColor.replace('1', '0.2').replace('0.8', '0.2');
+                            ds.backgroundColor = (idx === datasetIndex)
+                                ? ds.backgroundColor.replace('0.8', '1').replace('0.4', '1')
+                                : ds.backgroundColor.replace('1', '0.2').replace('0.8', '0.2');
+                            ds.pointRadius = (idx === datasetIndex) ? 6 : 3;
+                            ds.pointBackgroundColor = (idx === datasetIndex)
+                                ? ds.borderColor
+                                : ds.borderColor.replace('1', '0.2').replace('0.8', '0.2');
+                        });
+                        chart.update();
+                    }
+                }
+            };
+
+            chart = new Chart(ctx, chartConfig);
+        }
+
+        function updateChart() {
+            if (csvData.length > 0) {
+                createChart();
+            }
+        }
+        
+        function generateColors(count) {
+            const colors = [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 205, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 159, 64, 0.8)',
+                'rgba(199, 199, 199, 0.8)',
+                'rgba(83, 102, 255, 0.8)',
+                'rgba(255, 99, 255, 0.8)',
+                'rgba(99, 255, 132, 0.8)'
+            ];
+            
+            if (count <= colors.length) {
+                return colors.slice(0, count);
+            }
+            
+            const additionalColors = [];
+            for (let i = colors.length; i < count; i++) {
+                const hue = (i * 137.508) % 360;
+                additionalColors.push(`hsla(${hue}, 70%, 60%, 0.8)`);
+            }
+            
+            return [...colors, ...additionalColors];
+        }
+        
+        // Load data when page loads
+        window.onload = function() {
+            loadData();
+        };
+    </script>
+</body>
+
+</html>
+<!-- end document-->

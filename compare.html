@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+    <!-- Title Page-->
+    <title>ClimateLens - Compare</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/fontawesome-6.7.2/css/all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-5.3.7.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="css/aos.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="css/swiper-bundle.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/compare.css" rel="stylesheet" media="all">
+    <link href="css/style.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <span style="font-weight:700; font-size:1.3rem; color:#2d3e50;">🌦️ClimateLens</span>
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li>
+                            <a href="index.html">
+                                <i class="fas fa-home"></i>Home</a>
+                        </li>
+                        <li>
+                            <a href="chart.html">
+                                <i class="fas fa-chart-bar"></i>Charts</a>
+                        </li>
+                        <li>
+                            <a href="table.html">
+                                <i class="fas fa-table"></i>Tables</a>
+                        </li>
+                        <li>
+                            <a href="compare.html">
+                                <i class="far fa-check-square"></i>Compare</a>
+                        </li>
+                        <li>
+                            <a href="map.html">
+                                <i class="fas fa-map-marker-alt"></i>Maps</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop d-none d-lg-block">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap" style="display: flex; justify-content: space-between; align-items: center;">
+                            <!-- Logo -->
+                            <a class="logo" href="index.html" style="display: flex; align-items: center;">
+                                <span style="font-weight:700; font-size:1.3rem; color:#2d3e50;">🌦️ClimateLens</span>
+                            </a>
+                            <!-- Navbar -->
+                            <nav class="navbar-desktop">
+                                <ul class="nav" style="gap: 18px;">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="chart.html"><i class="fas fa-chart-bar"></i> Charts</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="table.html"><i class="fas fa-table"></i> Tables</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="compare.html"><i class="far fa-check-square"></i> Compare</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="map.html"><i class="fas fa-map-marker-alt"></i> Maps</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- END HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <h2>Compare Climate Change Data</h2>
+                        <div class="row mb-4 align-items-start" style="display: flex;">
+                            <!-- Form at left -->
+                            <div class="col-lg-4" style="max-width: 350px;">
+                                <form id="compareForm" class="mb-4">
+                                    <div class="mb-3">
+                                        <label for="year" class="form-label">Year:</label>
+                                        <select id="year" name="year" class="form-select">
+                                            <option value="">Select Year</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="climate" class="form-label">Climate:</label>
+                                        <select id="climate" name="climate" class="form-select">
+                                            <option value="">Select Climate</option>
+                                            <option value="Temp">Avg Temp (°C)</option>
+                                            <option value="CO2">CO2 (Tons/Capita)</option>
+                                            <option value="Rain">Rainfall (mm)</option>
+                                            <option value="Sea">Sea Level Rise (mm)</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Countries:</label>
+                                        <div id="countryCheckboxes" style="display: flex; flex-direction: column; gap: 6px;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="Argentina" id="country_cb_0" name="country">
+                                                <label class="form-check-label" for="country_cb_0" title=":flag_ar:">Argentina</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="Australia" id="country_cb_1" name="country">
+                                                <label class="form-check-label" for="country_cb_1" title=":flag_au:">Australia</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="Brazil" id="country_cb_2" name="country">
+                                                <label class="form-check-label" for="country_cb_2" title=":flag_br:">Brazil</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="China" id="country_cb_3" name="country">
+                                                <label class="form-check-label" for="country_cb_3" title=":flag_cn:">China</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="France" id="country_cb_4" name="country">
+                                                <label class="form-check-label" for="country_cb_4" title=":flag_fr:">France</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="Germany" id="country_cb_5" name="country">
+                                                <label class="form-check-label" for="country_cb_5" title=":flag_de:">Germany</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="Indonesia" id="country_cb_6" name="country">
+                                                <label class="form-check-label" for="country_cb_6" title=":flag_id:">Indonesia</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="Russia" id="country_cb_7" name="country">
+                                                <label class="form-check-label" for="country_cb_7" title=":flag_ru:">Russia</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="UK" id="country_cb_8" name="country">
+                                                <label class="form-check-label" for="country_cb_8" title=":flag_gb:">UK</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="USA" id="country_cb_9" name="country">
+                                                <label class="form-check-label" for="country_cb_9" title=":flag_us:">USA</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label d-block mb-2">Chart Type:</label>
+                                        <div id="chartTypeRadios">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="chartType" id="chartTypeBar" value="bar" checked>
+                                                <label class="form-check-label" for="chartTypeBar">Bar Chart</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="chartType" id="chartTypeLine" value="line">
+                                                <label class="form-check-label" for="chartTypeLine">Line Chart</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="chartType" id="chartTypeScatter" value="scatter">
+                                                <label class="form-check-label" for="chartTypeScatter">Scatter Plot</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Chart at right -->
+                            <div class="col-lg-8" style="display: flex; align-items: flex-start;">
+                                <canvas id="compareChart" width="500" height="300"></canvas>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-lg-12">
+                                <table class="table table-bordered" id="compareTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Country</th>
+                                            <th id="climateHeader">Climate</th>
+                                            <th>Gap</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Data rows will be inserted here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>Copyright © 2025 ClimateLens All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE CONTAINER-->
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="js/vanilla-utils.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-5.3.7.bundle.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/bootstrap5-init.js"></script>
+    <script src="js/main-vanilla.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/modern-plugins.js"></script>
+
+    <!-- Chart.js CDN for latest version -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Climate data
+        const climateData = [
+            {Year:2020,Country:"Argentina",Temp:14.3,CO2:4.2,Sea:3.5,Rain:990},
+            {Year:2020,Country:"Australia",Temp:12.9,CO2:14.6,Sea:3.9,Rain:878},
+            {Year:2020,Country:"Brazil",Temp:23.8,CO2:3.3,Sea:2.1,Rain:1573},
+            {Year:2020,Country:"China",Temp:10.2,CO2:7.3,Sea:4,Rain:812},
+            {Year:2020,Country:"France",Temp:13.1,CO2:6.5,Sea:4.3,Rain:910},
+            {Year:2020,Country:"Germany",Temp:9.5,CO2:8.7,Sea:3.5,Rain:728},
+            {Year:2020,Country:"Indonesia",Temp:21.6,CO2:3.5,Sea:4.8,Rain:2812},
+            {Year:2020,Country:"Russia",Temp:12.7,CO2:10.6,Sea:2.7,Rain:926},
+            {Year:2020,Country:"UK",Temp:7.8,CO2:5.7,Sea:4.9,Rain:1541},
+            {Year:2020,Country:"USA",Temp:14.5,CO2:18.7,Sea:4.9,Rain:1418},
+            {Year:2021,Country:"Argentina",Temp:12.9,CO2:3.6,Sea:4.7,Rain:829},
+            {Year:2021,Country:"Australia",Temp:13.9,CO2:15.1,Sea:4.1,Rain:534},
+            {Year:2021,Country:"Brazil",Temp:25.5,CO2:3,Sea:3.2,Rain:2320},
+            {Year:2021,Country:"China",Temp:9.6,CO2:10.8,Sea:3.1,Rain:890},
+            {Year:2021,Country:"France",Temp:11.8,CO2:5,Sea:4.1,Rain:1133},
+            {Year:2021,Country:"Germany",Temp:9.7,CO2:10.4,Sea:3,Rain:1081},
+            {Year:2021,Country:"Indonesia",Temp:24.1,CO2:3.3,Sea:4.7,Rain:2718},
+            {Year:2021,Country:"Russia",Temp:10.9,CO2:5.5,Sea:4.9,Rain:942},
+            {Year:2021,Country:"UK",Temp:12.3,CO2:5.5,Sea:4,Rain:1154},
+            {Year:2021,Country:"USA",Temp:12.3,CO2:13.3,Sea:3.3,Rain:617},
+            {Year:2022,Country:"Argentina",Temp:14.5,CO2:4.3,Sea:4,Rain:990},
+            {Year:2022,Country:"Australia",Temp:16,CO2:15.1,Sea:4.4,Rain:756},
+            {Year:2022,Country:"Brazil",Temp:25.8,CO2:2.6,Sea:4.6,Rain:1691},
+            {Year:2022,Country:"China",Temp:9.6,CO2:8.9,Sea:3.6,Rain:645},
+            {Year:2022,Country:"France",Temp:12.1,CO2:4.3,Sea:4.4,Rain:882},
+            {Year:2022,Country:"Germany",Temp:9.8,CO2:8.2,Sea:3.3,Rain:654},
+            {Year:2022,Country:"Indonesia",Temp:26.5,CO2:2.2,Sea:3.3,Rain:2700},
+            {Year:2022,Country:"Russia",Temp:9.3,CO2:11.5,Sea:3.3,Rain:671},
+            {Year:2022,Country:"UK",Temp:9.7,CO2:5.4,Sea:3.3,Rain:1045},
+            {Year:2022,Country:"USA",Temp:13.4,CO2:13.1,Sea:3.7,Rain:566},
+            {Year:2023,Country:"Argentina",Temp:13.0,CO2:4.4,Sea:3.4,Rain:1000},
+            {Year:2023,Country:"Australia",Temp:17.0,CO2:14.9,Sea:4.3,Rain:534},
+            {Year:2023,Country:"Brazil",Temp:24.4,CO2:2.0,Sea:4.3,Rain:1760},
+            {Year:2023,Country:"China",Temp:12,CO2:6.6,Sea:2.8,Rain:670},
+            {Year:2023,Country:"France",Temp:15.9,CO2:4.5,Sea:3.2,Rain:870},
+            {Year:2023,Country:"Germany",Temp:10,CO2:7.9,Sea:3.5,Rain:700},
+            {Year:2023,Country:"Indonesia",Temp:27.8,CO2:2.1,Sea:4.4,Rain:2648},
+            {Year:2023,Country:"Russia",Temp:9.9,CO2:11.4,Sea:3.3,Rain:460},
+            {Year:2023,Country:"UK",Temp:9.8,CO2:5.3,Sea:4.2,Rain:1154},
+            {Year:2023,Country:"USA",Temp:12.6,CO2:11.2,Sea:3.4,Rain:731}
+        ];
+
+        let compareChart;
+
+        // Countries list
+        const countries = [
+            "Argentina", "Australia", "Brazil", "China", "France",
+            "Germany", "Indonesia", "Russia", "UK", "USA"
+        ];
+
+        // Render country checkboxes
+        function renderCountryCheckboxes() {
+            const container = document.getElementById('countryCheckboxes');
+            container.innerHTML = '';
+            countries.forEach((country, idx) => {
+                const id = `country_cb_${idx}`;
+                container.innerHTML += `
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="${country}" id="${id}" name="country">
+                        <label class="form-check-label" for="${id}">${country}</label>
+                    </div>
+                `;
+            });
+        }
+
+        // Get selected countries from checkboxes
+        function getSelectedCountries() {
+            return Array.from(document.querySelectorAll('#countryCheckboxes input[type="checkbox"]:checked'))
+                .map(cb => cb.value);
+        }
+
+        function getSelectedChartType() {
+            const radios = document.getElementsByName('chartType');
+            for (let radio of radios) {
+                if (radio.checked) return radio.value;
+            }
+            return 'bar';
+        }
+
+        function updateCompare() {
+            const year = document.getElementById('year').value;
+            const selectedCountries = getSelectedCountries();
+            const climate = document.getElementById('climate').value;
+            const chartType = getSelectedChartType();
+
+            // At least 2 countries must be selected
+            if (selectedCountries.length < 2) {
+                const ctx = document.getElementById('compareChart').getContext('2d');
+                if (compareChart) compareChart.destroy();
+                ctx.clearRect(0, 0, 400, 200);
+
+                const tbody = document.querySelector('#compareTable tbody');
+                const climateHeader = document.getElementById('climateHeader');
+                climateHeader.textContent = '';
+                tbody.innerHTML = `<tr><td colspan="3" style="text-align:center;color:red;">Please select at least two countries.</td></tr>`;
+                return;
+            }
+
+            // Get data for selected year and countries
+            const dataArr = selectedCountries.map(country =>
+                climateData.find(d => d.Year == year && d.Country == country)
+            );
+
+            // Chart label and values
+            const climateLabels = {
+                Temp: "Avg Temp (°C)",
+                CO2: "CO2 (Tons/Capita)",
+                Rain: "Rainfall (mm)",
+                Sea: "Sea Level Rise (mm)"
+            };
+            const chartLabel = climateLabels[climate];
+            const values = dataArr.map(d => d ? d[climate] : null);
+
+            // Chart.js data
+            let chartData, chartOptions;
+            if (chartType === 'scatter') {
+                chartData = {
+                    datasets: selectedCountries.map((country, i) => ({
+                        label: country,
+                        data: values[i] !== null ? [{x: country, y: values[i]}] : [],
+                        backgroundColor: `hsl(${i * 36}, 70%, 60%)`
+                    }))
+                };
+                chartOptions = {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: `Climate Comparison: ${chartLabel} (${year})`
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'category',
+                            labels: selectedCountries,
+                            title: { display: true, text: 'Country' }
+                        },
+                        y: {
+                            title: { display: true, text: chartLabel }
+                        }
+                    }
+                };
+            } else {
+                chartData = {
+                    labels: selectedCountries,
+                    datasets: [
+                        {
+                            label: chartLabel,
+                            data: values,
+                            backgroundColor: selectedCountries.map((_, i) => `hsl(${i * 36}, 70%, 60%)`)
+                        }
+                    ]
+                };
+                chartOptions = {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: `Climate Comparison: ${chartLabel} (${year})`
+                        }
+                    }
+                };
+            }
+
+            const ctx = document.getElementById('compareChart').getContext('2d');
+            if (compareChart) compareChart.destroy();
+            compareChart = new Chart(ctx, {
+                type: chartType === 'scatter' ? 'scatter' : chartType,
+                data: chartData,
+                options: chartOptions
+            });
+
+            // Calculate max gap between any two selected countries
+            let gap = '-';
+            const validValues = values.filter(v => v !== null);
+            if (validValues.length >= 2) {
+                gap = (Math.max(...validValues) - Math.min(...validValues)).toFixed(2);
+            }
+
+            // Update table
+            const tbody = document.querySelector('#compareTable tbody');
+            const climateHeader = document.getElementById('climateHeader');
+            climateHeader.textContent = chartLabel;
+            tbody.innerHTML = selectedCountries.map((country, i) => `
+                <tr>
+                    <td>${country}</td>
+                    <td>${values[i] !== null ? values[i] : '-'}</td>
+                    ${i === 0 ? `<td rowspan="${selectedCountries.length}" style="vertical-align: middle; text-align: center;">${gap}</td>` : ''}
+                </tr>
+            `).join('');
+        }
+
+        // Render checkboxes on load
+        renderCountryCheckboxes();
+
+        document.getElementById('year').addEventListener('change', updateCompare);
+        document.getElementById('climate').addEventListener('change', updateCompare);
+        document.querySelectorAll('input[name="chartType"]').forEach(radio => {
+            radio.addEventListener('change', updateCompare);
+        });
+        document.getElementById('countryCheckboxes').addEventListener('change', updateCompare);
+
+        // Initial render
+        window.onload = updateCompare;
+    </script>
+<!-- end document-->
